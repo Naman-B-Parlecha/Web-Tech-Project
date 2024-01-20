@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import "./Login.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [LoggingIn, setLoggingIn] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -9,8 +11,10 @@ export default function Login() {
   function changeMode() {
     setLoggingIn((prev) => !prev);
   }
-  function authentication() {
-    // need to implement authentication via firebase //
+  function authentication() {}
+
+  function ChangePage() {
+    navigate("/home");
   }
   return (
     <div className="container">
@@ -18,7 +22,7 @@ export default function Login() {
       <p>{LoggingIn ? "Login To Account" : "Create account"}</p>
       <input type="email" placeholder="email" ref={emailRef} />
       <input type="password" placeholder="password" ref={passwordRef} />
-      <button className="btn-solid">
+      <button className="btn-solid" onClick={ChangePage}>
         {LoggingIn ? "Login" : "create account"}
       </button>
       <span>

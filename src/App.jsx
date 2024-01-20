@@ -1,15 +1,20 @@
 import { useState } from 'react'
-
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './components/Login.jsx';
 import Item from './components/Item.jsx';
 import './app.css'
+import HomePage from './pages/HomePage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
 function App() {
-  const [count, setCount] = useState(0)
-
+  const router = createBrowserRouter([
+    {path: "/", element: <LoginPage />},
+    {path: "/home", element: <HomePage />}
+  ])
   return (
     <div className='Home'>
-    {/* <Login /> */}
-    <Item />
+    {/* <Login />
+    <Item /> */}
+    <RouterProvider router={router} />
     </div>
   )
 }

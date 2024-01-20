@@ -12,9 +12,10 @@ export default function Item() {
           basil leaves.
         </p>
         <span>
+          <p>17.99</p>
           <input type="number" defaultValue={1} />
-          <button>Add to cart</button>
         </span>
+          <button>Add to cart</button>
       </article>
     </li>
   );

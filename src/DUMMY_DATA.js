@@ -1,0 +1,38 @@
+export const DUMMY_DATA = [
+  {
+    _id: "65ab6d02190ea1993fadcb73",
+    id: "1",
+    name: "Dosa",
+    desp: "A thin savory crepe in South Indian cuisine made from a fermented batter. Are served hot, often with chutney and sambar.",
+    price: 60,
+    img: "https://www.yellowthyme.com/wp-content/uploads/2023/02/Ragi-Dosa-idli-batter-07921-500x500.jpg",
+    type: ["south_indian", "breakfast", "veg", "savory"],
+  },
+  {
+    _id: "65ab6f21190ea1993fadcb75",
+    id: "2",
+    name: "Pulao",
+    desp: "A rice dish cooked with spices and vegetables, popular across India.",
+    price: 80,
+    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2013/03/veg-pulao-recipe.jpg",
+    type: ["indian", "main_course", "veg", "rice"],
+  },
+  {
+    _id: "65ab6fa7190ea1993fadcb76",
+    id: "3",
+    name: "Poori",
+    desp: "A deep-fried bread made from unleavened whole-wheat flour, often served with a curry. ",
+    price: 50,
+    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2015/02/poori-recipe-1.jpghttps://www.indianhealthyrecipes.com/wp-content/uploads/2020/12/poori-puri-recipe.jpg",
+    type: ["indian", "south_indian", "breakfast", "veg", "bread"],
+  },
+  {
+    _id: "65ab7041190ea1993fadcb77",
+    id: "4",
+    name: "Tomato Bath",
+    desp: "A spicy rice dish made with tomatoes and spices, popular in Karnataka cuisine.",
+    price: 70,
+    img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/tomato-bath.jpg",
+    type: ["south_indian", "main_course", "veg", "rice"],
+  },
+];

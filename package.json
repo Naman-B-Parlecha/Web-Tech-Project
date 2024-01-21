@@ -15,7 +15,7 @@
     "react-router-dom": "^6.21.3",
     "sass": "^1.69.7"
   },
-  "devDependencies": {  
+  "devDependencies": {
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -23,6 +23,6 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.8"
+    "vite": "^5.0.12"
   }
 }

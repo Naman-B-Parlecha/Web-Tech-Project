@@ -1,21 +1,24 @@
-import Image from "../assets/pasta.jpg";
 import "./Item.scss";
-export default function Item() {
+export default function Item({img,price,name,desp}) {
   return (
     <li>
       <article>
-        <img src={Image} alt="food image" />
-        <h2>Pasta</h2>
-        <p>
-          Delight in a symphony of flavors with al dente pasta bathed in a
-          luscious tomato basil sauce, adorned with Parmesan shavings and fresh
-          basil leaves.
+        <img src={img} alt="food image" />
+        <h2>{name}</h2>
+        <p className={"desp"}>
+          {desp}
         </p>
         <span>
-          <p>17.99</p>
+          <div className="pricing">
+            <p className="title">price</p>
+            <p>₹{price}</p>
+          </div>
+          <div className="quantity">
+          <p className="title">quantity</p>
           <input type="number" defaultValue={1} />
+          </div>
         </span>
-          <button>Add to cart</button>
+        <button>Add to cart</button>
       </article>
     </li>
   );

@@ -11,8 +11,7 @@ export default function Login() {
   function changeMode() {
     setLoggingIn((prev) => !prev);
   }
-
-  // function authentication() {}
+  function authentication() {}
 
   function ChangePage() {
     navigate("/home");

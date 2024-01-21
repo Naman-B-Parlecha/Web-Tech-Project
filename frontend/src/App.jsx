@@ -1,15 +1,17 @@
-import { useState } from 'react'
-
-import Login from './components/Login.jsx';
-import './app.css'
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import "./App.css";
+import HomePage from "./pages/HomePage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 function App() {
-  const [count, setCount] = useState(0)
-
+  const router = createBrowserRouter([
+    { path: "/", element: <LoginPage /> },
+    { path: "/home", element: <HomePage /> },
+  ]);
   return (
-    <div className='Home'>
-    <Login />
+    <div className="Home">
+      <RouterProvider router={router} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

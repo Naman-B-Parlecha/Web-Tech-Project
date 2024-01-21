@@ -12,9 +12,7 @@ export const getAllDishes = async (req, res) => {
 
 export const getOneDish = async (req, res) => {
   try {
-    console.log(req.params.d_id);
-    const dish = await Dish.findById(req.params.d_id);
-    // const dish = await Dish.findOne(id=req.params.d_id);
+    const dish = await Dish.findOne({id:req.params.d_id});
     if (!dish) {
       res.status(404).json({ message: 'Dish not found' });
     } else {

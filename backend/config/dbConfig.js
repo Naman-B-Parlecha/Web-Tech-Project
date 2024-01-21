@@ -5,8 +5,7 @@ async function connectToDatabase() {
     
     const uri = 'mongodb+srv://mohitnagaraj20:XEdCOl9OwqV8Hv7m@resdb.tj9krjc.mongodb.net/';
     
-    const connect=await mongoose.connect(uri);
-    // connect.connection.db.collection('users').insertOne({name:'mohit',age:20});
+    await mongoose.connect(uri);
 
     console.log('Connected to the database');
   } catch (error) {

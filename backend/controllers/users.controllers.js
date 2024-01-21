@@ -2,9 +2,6 @@ import User from "../models/User.js";
 
 export const findUser = async (req, res) => {
     try {
-        // console.log(req.query.email);
-        // console.log(req.query.pass);
-        // const user = await User.findById(req.params.id);
         const user = await User.findOne({ email: req.body.email, pass: req.body.pass });
         if (!user) {
             res.status(404).json({ message: "User not found" });
@@ -27,3 +24,12 @@ export const addUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
+export const updateCart = async (req,res) => {
+    try{
+        await User.findByIdAndUpdate(req.params.u_id,{cart:req.body.cart});
+        res.status(200).json({message:"Cart Updated"});
+    }catch{
+        res.status(404).json({message:"User not found"});
+    }
+};

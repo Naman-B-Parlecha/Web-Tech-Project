@@ -15,7 +15,7 @@
     "react-router-dom": "^6.21.3",
     "sass": "^1.69.7"
   },
-  "devDependencies": {
+  "devDependencies": {  
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react-swc": "^3.5.0",

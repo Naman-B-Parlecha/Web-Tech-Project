@@ -1,3 +1,5 @@
+
+
 :root {
   --BLACK: #222831;
   --BLUE: #30475e;
@@ -10,10 +12,15 @@
   margin: 0;
   box-sizing: 0;
 }
-.main-container{
+.main-container {
   width: 100%;
   min-height: 100vh;
+  background-image: url('../assets/Upscales.ai_1705848261804.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
 header {
   padding: 1rem 2rem;
 //   background-color: var(--BLACK);

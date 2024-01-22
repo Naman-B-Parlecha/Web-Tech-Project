@@ -9,7 +9,7 @@ export default function HomePage() {
         <h2>Web Tech Proj</h2>
         <button>Cart</button>
       </header>
-      <div className="filters">
+      <div className="filters"> 
         <button className={"selected"}>all</button>
         <button className={"unselected"}>indian</button>
         <button className={"unselected"}>rice</button>

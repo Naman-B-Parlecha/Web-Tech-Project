@@ -3,106 +3,133 @@
   --BLUE: #30475e;
   --WHITE: #dddddd;
   --RED: #f05454;
+  --PRIMARY: #f8f9f2;
+  --SECONDARY: #ffffff;
+  --NEWBLACK: #141413;
+  --TERNARY: #799464;
 }
-
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
-  font-family: monospace;
 }
 li {
+  overflow: hidden;
+  // border-radius: 1rem;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
   list-style: none;
-  width: 20rem;
-  background-color: var(--BLACK);
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-
-  article {
+  width: 19rem;
+  height: 20rem;
+  background-color: white;
+  color: var(--BLACK);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add box-shadow for a subtle effect */
+  transition: box-shadow 0.3s ease; /* Add a transition for a smooth effect */
+  img {
     width: 100%;
-    height: 100%;
+    height: 50%;
+    object-fit: cover;
+  }
+  .title-name {
+    padding-left: 0.75rem;
+    width: 100%;
+    font-size: xx-large;
+    // text-align: center;
+  }
+  .desp {
+    padding-left: 0.75rem;
+    // text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: wrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    // font-weight: 520;
+  }
+  .details {
+    padding-top: 0.5rem;
+    width: 100%;
     display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    img {
-      width: 100%;
-      height: 11rem;
-      border-radius: 0.25rem;
-      object-fit: cover;
-    }
-    h2 {
-      font-size: x-large;
-      margin-bottom: 0.2rem;
-    }
-    .desp {
-      // background-color: #f05454;
-      height: 60px;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      white-space: wrap;
-      text-overflow: ellipsis;
-      text-align: center;
-    }
-    span {
-      margin: 0.75rem 0;
-      width: 100%;
-      height: auto;
+    flex-flow: row wrap;
+    .pricing {
+      padding-left: 0.5rem;
+      flex: 1;
       display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-evenly;
+      flex-flow: column wrap;
+      justify-content: center;
       align-items: center;
-
-      .pricing {
+      width: 100%;
+      p.price {
+        width: 100%;
+        color: #141413;
         display: flex;
-        justify-content: center;
         align-items: center;
-        flex-direction: column;
-        width: 50%;
-
-        .title {
-          font-size: medium;
-        }
-        p {
-          font-size: large;
+        padding-left: 0.9rem;
+        font-size: 1.5rem;
+        font-weight: 520;
+        span {
+          font-size: small;
+          padding-right: 0.2rem;
         }
       }
       .quantity {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        width: 50%;
-
-        .title {
-          font-size: medium;
-        }
-        input {
-          width: 50%;
-          padding: 0.5rem 0.3rem;
-          outline: none;
+        button {
           border: none;
-          background-color: var(--BLUE);
-          border-radius: 0.75rem;
-          font-size: large;
+          outline: none;
+          background-color: transparent;
+          color: var(--NEWBLACK);
+          font-size: x-large;
+          // padding: 0.1rem;
+          flex: 1;
+          border-radius: 1rem;
+        }
+        .input-number {
+          flex: 1;
+          width: 30%;
           text-align: center;
+          padding: 0.2rem 0.5rem;
+          -moz-appearance: textfield;
+          appearance: textfield;
+          background-color: transparent;
+          color: var(--BLACK);
+          outline: none;
+          border: 1px solid black;
+          border-radius: 1rem;
+        }
+
+        .input-number::-webkit-inner-spin-button,
+        .input-number::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
         }
       }
     }
+  }
+  .add {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-end;
+    justify-content: center;
+    flex: 1;
+
     button {
-      background-color: var(--RED);
-      color: #dddddd;
+      padding: 0.33rem 0.75rem;
+      font-size: large;
+      border-radius: 1rem;
       border: none;
       outline: none;
-      padding: 0.4rem 0.55rem;
-      font-size: large;
-      border-radius: 0.25rem;
-      margin-bottom: 0.5rem;
+      background-color: var(--RED);
       transition: all 0.2s ease-in-out 0s;
-      width: 90%;
       &:hover {
-        background-color: var(--BLUE);
+        background-color: var(--TERNARY);
       }
     }
   }

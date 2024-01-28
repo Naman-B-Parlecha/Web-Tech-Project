@@ -70,7 +70,7 @@ Once both the backend and frontend are running, you can access the application b
 
 ## Usage
 
-Feel free to explore the restaurant website and its features. You can customize the content, design, and functionality to fit your needs.
+feel free to explore this restaurant website and see various different features built on this website
 
 ## Contributing
 

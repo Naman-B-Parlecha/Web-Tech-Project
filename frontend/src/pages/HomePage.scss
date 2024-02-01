@@ -1,100 +1,159 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Lilita+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Teko&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
 :root {
-  --BLACK: #222831;
-  --BLUE: #30475e;
-  --WHITE: #dddddd;
+  // --BLACK: #222831;
+  // --BLUE: #30475e;
+  // --WHITE: #dddddd;
   --RED: #f05454;
+
+  --PRIMARY: #f8f9f2;
+  --SECONDARY: #ffffff;
+  --BLACK: #141413;
+  --TERNARY: #799464;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: 0;
-}
 .main-container {
   width: 100%;
+  overflow-x: hidden;
+  white-space: nowrap;
   min-height: 100vh;
-  background-image: url('../assets/Upscales.ai_1705848261804.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-header {
-  padding: 1rem 2rem;
-//   background-color: var(--BLACK);
   display: flex;
-  justify-content: space-between;
+  flex-flow: column wrap;
   align-items: center;
-
-  h2 {
-    font-size: xx-large;
-  }
-  button {
-    font-size: x-large;
-    padding: 0.5rem 1rem;
-    background-color: var(--WHITE);
-    color: var(--BLACK);
-    outline: none;
-    border: none;
-    border-radius: 0.75rem;
-    font-weight: 600;
-    transition: all 0.2s ease-in-out 0s;
-
-    &:hover {
-      background-color: var(--RED);
-      color: var(--WHITE);
-    }
-  }
-}
-.filters {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-  padding: 0.25rem 2rem;
-  width: 100%;
-//   background-color: #222831;
-
-  .selected {
-    background-color: var(--RED);
-    padding: 0.5rem 0.75rem;
-    margin: 0.5rem;
-    border: none;
-    outline: none;
-    border-radius: 0.5rem;
-    font-size: large;
-    transition: all 0.2s ease-in-out 0s;
-  }
-  .unselected {
-    background-color: transparent;
-    border: 2px solid var(--WHITE);
-    padding: 0.5rem 0.75rem;
-    margin: 0.5rem;
-    outline: none;
-    border-radius: 0.5rem;
-    font-size: large;
-    transition: all 0.1s ease-in 0s;
-
-    &:hover {
-      background-color: var(--RED);
-      border: none;
-    }
-  }
-}
-.items {
-  height: auto;
-  margin-top: 1rem;
-  width: 100%;
-  ul {
-    height: auto;
+  // justify-content: center;
+  background-color: var(--PRIMARY);
+  padding-bottom: 2rem;
+  header {
+    background-color: var(--SECONDARY);
     width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+    padding: 1rem 2rem;
     flex-flow: row wrap;
-    row-gap: 1rem;
+    gap: 1rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    .project-name {
+      text-align: center;
+      flex: 1;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: var(--RED);
+      padding-left: 1;
+      font-family: 'Caveat', cursive;
+    }
+    input {
+      background-color: var(--PRIMARY);
+      color: var(--BLACK);
+      padding: 0rem 1rem;
+      flex: 5;
+      border-radius: 1rem;
+      border: 1px solid var(--BLACK);
+      outline: none;
+      font-size: large;
+      font-weight: 600;
+      &::placeholder {
+        color: var(--BLACK);
+      }
+    }
+    .search {
+      background-color: var(--PRIMARY);
+      color: var(--BLACK);
+      font-size: large;
+      border: none;
+      padding: 0rem 1rem;
+      outline: none;
+      border-radius: 1rem;
+      text-align: center;
+      transition: all 0.2s ease-in 0s;
+      &:hover {
+        background-color: var(--TERNARY);
+        color: var(--SECONDARY);
+        cursor: pointer;
+      }
+    }
+    .filters-btn {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      align-items: center;
+      background-color: var(--PRIMARY);
+      color: var(--BLACK);
+      font-size: x-large;
+      border: none;
+      padding: 1rem;
+      outline: none;
+      border-radius: 1rem;
+
+      p {
+        color: var(--RED);
+        text-align: left;
+        flex: 2;
+        font-size: large;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .cart {
+      background-color: var(--BLACK);
+      color: var(--SECONDARY);
+      font-size: x-large;
+      font-weight: 600;
+      flex: 1;
+      border: none;
+      outline: none;
+      border-radius: 1rem;
+      transition: all 0.3s ease-in 0s;
+      &:hover {
+        background-color: var(--TERNARY);
+        color: var(--SECONDARY);
+        cursor: pointer;
+      }
+    }
+  }
+  .one-liner {
+    padding: 1.5rem 0 1rem;
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    h1 {
+      word-spacing: 10px;
+      color: var(--BLACK);
+      font-size: 2rem;
+      white-space: wrap;
+      font-family: "Climate Crisis", sans-serif;
+      text-align: center;
+    }
+    .line {
+      font-family: "Lilita One", sans-serif;
+      text-align: center;
+      width: 100%;
+      color: var(--BLACK);
+    }
+  }
+  .featured {
+    width: 100vw;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding-top: 2rem;
+    .featured-header {
+      width: 85%;
+      color: var(--BLACK);
+      font-size: 1.75rem;
+      text-decoration: underline;
+      font-family: "Teko", sans-serif;
+      font-weight: 600;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 100vw;
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Item.scss";
 
-export default function Item({ img, price, name, desp }) {
+export default function Item({ img, price, name, desp, addToCart }) {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
@@ -23,7 +23,9 @@ export default function Item({ img, price, name, desp }) {
     const value = +e.target.value;
     setQuantity(isNaN(value) ? 1 : value);
   }
-
+  function addCart() {
+    addToCart(quantity);
+  }
   return (
     <li>
       <img src={img} alt="food image" />
@@ -47,7 +49,7 @@ export default function Item({ img, price, name, desp }) {
           </div>
         </div>
         <div className="add">
-          <button>Add to cart</button>
+          <button onClick={addCart}>Add to cart</button>
         </div>
       </div>
     </li>

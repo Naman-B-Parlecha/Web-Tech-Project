@@ -17,7 +17,7 @@ export default function Login() {
     navigate("/home");
   }
   return (
-    <div className="container">
+    <div className="my-container">
       <h2>Web Tech</h2>
       <p>{LoggingIn ? "Welcome Back" : "Create account"}</p>
       <label htmlFor="email">Email Address</label>

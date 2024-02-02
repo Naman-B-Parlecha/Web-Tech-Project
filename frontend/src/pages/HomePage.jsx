@@ -1,28 +1,54 @@
-import React, { useState } from "react";
-import { BsHddStack } from "react-icons/bs";
+import React, { useRef, useState } from "react";
+import { BsSliders } from "react-icons/bs";
 import "./HomePage.scss";
 import { useNavigate } from "react-router-dom";
 import { DUMMY_DATA, ALL_DATA } from "../DUMMY_DATA.js";
 import Item from "../components/Item.jsx";
 
 export default function HomePage() {
-  const [cartItem, setCartItem] = useState(null);
+  const filteredItems = useRef();
+  const [cartItem, setCartItem] = useState([]);
   const navigator = useNavigate();
+  const searchItem = useRef();
+  const [isSearching, setIsSearching] = useState(false);
   function PageChange() {
     navigator("/cart");
   }
-
+  function addToCart(item, quantity) {
+    if (!cartItem.find((cartItem) => cartItem.id === item.id))
+      setCartItem((prev) => [...prev, { id: item.id, quantity: quantity }]);
+  }
+  function Searching() {
+    filteredItems.current = DUMMY_DATA.filter(
+      (item) =>
+        item.name.toLowerCase() === searchItem.current.value.toLowerCase()
+    );
+    console.log(filteredItems.current);
+    if (searchItem.current.value === "") {
+      setIsSearching(false);
+    } else {
+      setIsSearching(true);
+    }
+    if (filteredItems.current.length === 0) {
+      setIsSearching(false);
+      alert(`no food with name ${searchItem.current.value} found`)
+    }
+    searchItem.current.value = "";
+  }
+  console.log(cartItem);
   return (
     <div className="main-container">
       <header>
         <p className="project-name">Web Tech</p>
-        <input type="text" placeholder={"search"} />
-        <button className="search">search</button>
+        <input type="text" placeholder={"search"} ref={searchItem} />
+        <button className="search" onClick={Searching}>
+          search
+        </button>
         <button className="filters-btn">
-          <BsHddStack />
+          <BsSliders />
         </button>
         <button className="cart" onClick={PageChange}>
-          Cart
+          Cart({cartItem.length})
         </button>
       </header>
       <div className="one-liner">
@@ -33,34 +59,64 @@ export default function HomePage() {
           convenience is just a tap away!
         </p>
       </div>
-      <div className="featured">
-        <h2 className="featured-header">Featured Dishes</h2>
-        <ul>
-          {DUMMY_DATA.map((item) => (
-            <Item
-              desp={item.desp}
-              name={item.name}
-              img={item.img}
-              price={item.price}
-              key={item.id}
-            />
-          ))}
-        </ul>
-      </div>
-      <div className="featured">
-        <h2 className="featured-header">All Dishes</h2>
-        <ul>
-          {ALL_DATA.map((item) => (
-            <Item
-              desp={item.desp}
-              name={item.name}
-              img={item.img}
-              price={item.price}
-              key={item.id}
-            />
-          ))}
-        </ul>
-      </div>
+      {!isSearching && (
+        <div className="featured">
+          <h2 className="featured-header">Featured Dishes</h2>
+          <ul>
+            {DUMMY_DATA.map((item) => (
+              <Item
+                addToCart={(quantity) => {
+                  addToCart(item, quantity);
+                }}
+                desp={item.desp}
+                name={item.name}
+                img={item.img}
+                price={item.price}
+                key={item.id}
+              />
+            ))}
+          </ul>
+        </div>
+      )}
+      {!isSearching && (
+        <div className="featured">
+          <h2 className="featured-header">All Dishes</h2>
+          <ul>
+            {ALL_DATA.map((item) => (
+              <Item
+                addToCart={(quantity) => {
+                  addToCart(item, quantity);
+                }}
+                desp={item.desp}
+                name={item.name}
+                img={item.img}
+                price={item.price}
+                key={item.id}
+              />
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {isSearching && (
+        <div className="featured">
+          <h2 className="featured-header">Searched Dish</h2>
+          <ul>
+            {filteredItems.current.map((item) => (
+              <Item
+                addToCart={(quantity) => {
+                  addToCart(item, quantity);
+                }}
+                desp={item.desp}
+                name={item.name}
+                img={item.img}
+                price={item.price}
+                key={item.id}
+              />
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

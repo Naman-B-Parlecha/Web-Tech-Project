@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
+
+:root {
+  --BLACK: #222831;
+  --BLUE: #30475e;
+  --WHITE: #dddddd;
+  --RED: #f05454;
+  --PRIMARY: #f8f9f2;
+  --SECONDARY: #fefefe;
+  --NEWBLACK: #141413;
+  --TERNARY: #799464;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+div.container {
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--PRIMARY);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  .cartHeader {
+    width: 100%;
+    background-color: var(--SECONDARY);
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem;
+
+    @media screen and (max-width: 425px) {
+      justify-content: center;
+    }
+    h2.project-name {
+      flex: 1;
+      font-size: 2.5rem;
+      color: var(--RED);
+      font-weight: 700;
+      font-family: "Caveat", cursive;
+      @media screen and (max-width: 425px) {
+        text-align: center;
+      }
+    }
+    h1.your-cart {
+      flex: 2;
+      color: var(--NEWBLACK);
+      text-align: center;
+      font-family: "Black Ops One", system-ui;
+    }
+    .button-div {
+      flex: 1;
+      display: flex;
+      padding-right: 0.5rem;
+      justify-content: flex-end;
+      .homeButton {
+        min-width: 10rem;
+        padding: 0.5rem 1rem;
+        background-color: var(--BLACK);
+        color: var(--SECONDARY);
+        font-size: x-large;
+        font-weight: 600;
+        border: none;
+        outline: none;
+        border-radius: 0.65rem;
+        transition: all 0.3s ease-in 0s;
+        &:hover {
+          background-color: var(--TERNARY);
+          color: var(--SECONDARY);
+          cursor: pointer;
+        }
+      }
+      @media screen and (max-width: 425px) {
+        text-align: center;
+      }
+    }
+  }
+  .main-cart {
+    width: 100%;
+    min-height: 40rem;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 2rem;
+    .cart-items {
+      padding: 1.5rem;
+      flex: 3;
+      background-color: var(--SECONDARY);
+      display: flex;
+      flex-flow: column wrap;
+      gap: 1rem;
+    }
+    .cart-price {
+      flex: 1;
+      background-color: #f5f5f5;
+      padding: 1rem;
+      .sum {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 2rem;
+        color: #141413;
+      }
+      .subTotal {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .sub {
+          color: var(--NEWBLACK);
+          font-size: 1.25rem;
+          font-weight: 700;
+        }
+        .subAmt {
+          color: var(--NEWBLACK);
+          font-size: 1.25rem;
+          font-weight: 700;
+          padding-right: 0.5rem;
+        }
+      }
+      .checkOut {
+        margin-top: 2rem;
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        outline: none;
+        border: none;
+        background-color: var(--NEWBLACK);
+        color: var(--PRIMARY);
+        border-radius: 1rem;
+      }
+    }
+  }
+}

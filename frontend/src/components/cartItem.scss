@@ -1,0 +1,129 @@
+:root {
+  --BLACK: #222831;
+  --BLUE: #30475e;
+  --WHITE: #dddddd;
+  --RED: #f05454;
+  --PRIMARY: #f8f9f2;
+  --SECONDARY: #fefefe;
+  --NEWBLACK: #141413;
+  --TERNARY: #799464;
+}
+
+.cartItemCont {
+  overflow: hidden;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-flow: row wrap;
+  min-height: 13rem;
+  width: 100%;
+  background-color: var(--WHITE);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+  img {
+    width: 12rem;
+    height: 13rem;
+    background-color: #799464;
+    flex: 1;
+  }
+  .itemDetails {
+    padding: 0.5rem 0 0 1rem;
+    flex: 5;
+    // background-color: #f05454    ;
+    display: flex;
+    flex-flow: column wrap;
+
+    h1.itemName {
+      color: var(--NEWBLACK);
+      font-size: 2.5 rem;
+    }
+    p.itemDesp {
+      color: var(--NEWBLACK);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      white-space: wrap;
+      text-overflow: ellipsis;
+      width: 100%;
+      font-size: 1rem;
+    }
+    .removeItem{
+      margin-top: auto;
+      margin-bottom: 2rem;
+      padding: 0.7rem 0.5rem;
+      border-radius: 1rem;
+      outline: none;
+      border: none;
+      background-color: var(--NEWBLACK);
+      color: var(--PRIMARY);
+      justify-items: end;
+      width: 12rem;
+      transition: all 0.2s ease-in-out 0s;
+      &:hover{
+        background-color: var(--RED);
+      }
+    }
+  }
+  .details {
+    flex: 1;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    // padding: 2rem 0.5rem 0.5rem 0.5rem;
+
+    .cartItemPrice {
+      .totalItemPrice {
+        text-align: center;
+        font-size: 1.5rem;
+        font-family: monospace;
+        color: #141413;
+
+        .priceAmount {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .quantityItem {
+      padding-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      button {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: var(--NEWBLACK);
+        font-size: x-large;
+        // padding: 0.1rem;
+        flex: 1;
+        border-radius: 1rem;
+      }
+      .input-number {
+        flex: 1;
+        width: 30%;
+        text-align: center;
+        padding: 0.2rem 0.5rem;
+        -moz-appearance: textfield;
+        appearance: textfield;
+        background-color: transparent;
+        color: var(--BLACK);
+        outline: none;
+        border: 1px solid black;
+        border-radius: 1rem;
+      }
+
+      .input-number::-webkit-inner-spin-button,
+      .input-number::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+    label {
+      color: var(--NEWBLACK);
+      padding: 0;
+      // background-color: #799464;
+      text-align: center;
+    }
+  }
+}

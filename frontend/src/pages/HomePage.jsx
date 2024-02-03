@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BsSliders } from "react-icons/bs";
+import { BiArrowBack } from "react-icons/bi";
 import "./HomePage.scss";
 import { useNavigate } from "react-router-dom";
 import { DUMMY_DATA, ALL_DATA } from "../DUMMY_DATA.js";
@@ -23,7 +24,10 @@ export default function HomePage({uid, cartItem, setCartItem}) {
 
   }, []);
   function PageChange() {
-    navigator("/cart");
+    if(uid==="")
+      navigator("/");
+    else
+      navigator("/cart");
   }
 
   function addToCart(item, quantity) {
@@ -32,7 +36,7 @@ export default function HomePage({uid, cartItem, setCartItem}) {
   }
 
   function Searching() {
-    filteredItems.current = DUMMY_DATA.filter(
+    filteredItems.current = allitems.filter(
       (item) =>
         item.name.toLowerCase() === searchItem.current.value.toLowerCase()
     );
@@ -48,13 +52,18 @@ export default function HomePage({uid, cartItem, setCartItem}) {
     }
     searchItem.current.value = "";
   }
-
+  function removeHandler() {
+    setIsSearching(false);
+  }
   console.log(cartItem);
   console.log(uid);
   return (
     <div className="main-container">
       <header>
         <p className="project-name">Web Tech</p>
+        {isSearching && <button className="filters-btn" onClick={removeHandler}>
+        <BiArrowBack />
+        </button>}
         <input type="text" placeholder={"search"} ref={searchItem} />
         <button className="search" onClick={Searching}>
           search

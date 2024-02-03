@@ -21,6 +21,7 @@ export default function Login({setUid,setCartItem,loginFailedHandler}) {
           pass: passwordRef.current.value,
         }
         )
+        console.log(res.data);
         setUid(res.data._id);
         setCartItem(res.data.cart);
         navigate("/home");

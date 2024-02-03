@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { BsSliders } from "react-icons/bs";
 import "./HomePage.scss";
 import { useNavigate } from "react-router-dom";
-import { DUMMY_DATA, ALL_DATA } from "../DUMMY_DATA.js";
+import { DUMMY_DATA} from "../DUMMY_DATA.js";
 import Item from "../components/Item.jsx";
 import axios from "axios";
 
@@ -23,12 +23,30 @@ export default function HomePage({uid, cartItem, setCartItem}) {
 
   }, []);
   function PageChange() {
+    if(uid===""){
+      navigator("/");
+    }else{
     navigator("/cart");
+    }
   }
 
-  function addToCart(item, quantity) {
-    if (!cartItem.find((cartItem) => cartItem.id === item.id))
-      setCartItem((prev) => [...prev, { dishid: parseInt(item.id), quantity: quantity }]);
+  async function addToCart(item, quantity) {
+    const updatedCartItem = cartItem.map((cartItem) => {
+      if (cartItem.dishid === parseInt(item.id)) {
+        cartItem.quantity += quantity;
+      }
+      return cartItem;
+    });
+  
+    if (!updatedCartItem.find((cartItem) => cartItem.dishid === parseInt(item.id))) {
+      updatedCartItem.push({ dishid: parseInt(item.id), quantity: quantity });
+    }
+  
+    await setCartItem(updatedCartItem);
+  
+    axios.post(`http://localhost:3001/api/v1/user/${uid}/cart`, {
+      cart: updatedCartItem, 
+    });
   }
 
   function Searching() {

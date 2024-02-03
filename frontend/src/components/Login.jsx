@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -11,11 +12,38 @@ export default function Login() {
   function changeMode() {
     setLoggingIn((prev) => !prev);
   }
-  // function authentication() {}
-
-  function ChangePage() {
-    navigate("/home");
+  async function authentication() {
+    if(LoggingIn){
+      try{
+        const res=await axios.post('http://localhost:3001/api/v1/user/login',
+        {
+          email: emailRef.current.value,
+          pass: passwordRef.current.value,
+        }
+        )
+        console.log(res.data);
+        navigate("/home");
+      }catch(e){
+        if(e.response.data.message==="User not found"){
+          alert("Wrong credentials");
+          //do something
+        }
+        return e;
+      }
+    }else{
+      try{
+        const res=await axios.post("http://localhost:3001/api/v1/user/register", {
+            email: emailRef.current.value,
+            pass: passwordRef.current.value,
+          })
+        console.log(res);
+        navigate("/home");
+        }catch(e){
+          console.log(e);
+        }
+    }
   }
+
   return (
     <div className="my-container">
       <h2>Web Tech</h2>
@@ -24,7 +52,7 @@ export default function Login() {
       <input id="email" name="email" type="email" placeholder="xyz@gmail.com" ref={emailRef} />
       <label htmlFor="pass">Password</label>
       <input id="password" name="password" type="password" placeholder="xyz@123" ref={passwordRef} />
-      <button className="btn-solid" onClick={ChangePage}>
+      <button className="btn-solid" onClick={authentication}>
         {LoggingIn ? "Login" : "create account"}
       </button>
       <span>

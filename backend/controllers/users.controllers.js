@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 
 export const findUser = async (req, res) => {
+    console.log(req.body);
     try {
         const user = await User.findOne({ email: req.body.email, pass: req.body.pass });
         if (!user) {
@@ -15,6 +16,7 @@ export const findUser = async (req, res) => {
 }
 
 export const addUser = async (req, res) => {
+    console.log(req.body);
     try {
         console.log(req.body);
         const user = await User.create(req.body);

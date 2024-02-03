@@ -8,6 +8,6 @@ const router = Router();
 router.get("/api/v1/dishes", getAllDishes);
 router.get("/api/v1/dishes/:d_id",getOneDish);
 
-router.get("/api/v1/user/:u_id/cart",updateCart);
+router.post("/api/v1/user/:u_id/cart",updateCart);
 
 export default router;

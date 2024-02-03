@@ -3,7 +3,7 @@ import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-export default function Login({setUid,setCartItem}) {
+export default function Login({setUid,setCartItem,loginFailedHandler}) {
   const navigate = useNavigate();
   const [LoggingIn, setLoggingIn] = useState(false);
   const emailRef = useRef();
@@ -26,8 +26,8 @@ export default function Login({setUid,setCartItem}) {
         navigate("/home");
       }catch(e){
         if(e.response.data.message==="User not found"){
-          alert("Wrong credentials");
-          //do something
+          // alert("Wrong credentials");
+          loginFailedHandler();
         }
         return e;
       }

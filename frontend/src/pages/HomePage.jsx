@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BsSliders } from "react-icons/bs";
 import "./HomePage.scss";
 import { useNavigate } from "react-router-dom";
 import { DUMMY_DATA, ALL_DATA } from "../DUMMY_DATA.js";
 import Item from "../components/Item.jsx";
+import axios from "axios";
 
 export default function HomePage() {
   const filteredItems = useRef();
@@ -11,13 +12,25 @@ export default function HomePage() {
   const navigator = useNavigate();
   const searchItem = useRef();
   const [isSearching, setIsSearching] = useState(false);
+  const [allitems, setAllItems] = useState([]);
+  useEffect(() => {
+    async function getAllItems() {
+      const res = await axios.get("http://localhost:3001/api/v1/dishes");
+      console.log(res);
+      setAllItems(res.data);
+    }
+    getAllItems();
+
+  }, []);
   function PageChange() {
     navigator("/cart");
   }
+
   function addToCart(item, quantity) {
     if (!cartItem.find((cartItem) => cartItem.id === item.id))
       setCartItem((prev) => [...prev, { id: item.id, quantity: quantity }]);
   }
+
   function Searching() {
     filteredItems.current = DUMMY_DATA.filter(
       (item) =>
@@ -31,11 +44,13 @@ export default function HomePage() {
     }
     if (filteredItems.current.length === 0) {
       setIsSearching(false);
-      alert(`no food with name ${searchItem.current.value} found`)
+      alert(`no food with name ${searchItem.current.value} found`);
     }
     searchItem.current.value = "";
   }
+
   console.log(cartItem);
+
   return (
     <div className="main-container">
       <header>
@@ -82,7 +97,7 @@ export default function HomePage() {
         <div className="featured">
           <h2 className="featured-header">All Dishes</h2>
           <ul>
-            {ALL_DATA.map((item) => (
+            {allitems.map((item) => (
               <Item
                 addToCart={(quantity) => {
                   addToCart(item, quantity);

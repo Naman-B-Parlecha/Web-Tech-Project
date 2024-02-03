@@ -3,11 +3,14 @@ import "./App.css";
 import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
+import { useState } from "react";
 function App() {
+  const [uid,setUid] = useState("");
+  const [cartItem, setCartItem] = useState([]);
   const router = createBrowserRouter([
-    { path: "/", element: <LoginPage /> },
-    { path: "/home", element: <HomePage /> },
-    { path: "/cart", element: <CartPage /> },
+    { path: "/", element: <LoginPage setUid={setUid} setCartItem={setCartItem}/> },
+    { path: "/home", element: <HomePage uid={uid} cartItem={cartItem} setCartItem={setCartItem}/> },
+    { path: "/cart", element: <CartPage cart={cartItem} setCart={setCartItem}/> },
   ]);
   return (
     <div className="AppHome">

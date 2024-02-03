@@ -6,9 +6,9 @@ import { DUMMY_DATA, ALL_DATA } from "../DUMMY_DATA.js";
 import Item from "../components/Item.jsx";
 import axios from "axios";
 
-export default function HomePage() {
+export default function HomePage({uid, cartItem, setCartItem}) {
   const filteredItems = useRef();
-  const [cartItem, setCartItem] = useState([]);
+  
   const navigator = useNavigate();
   const searchItem = useRef();
   const [isSearching, setIsSearching] = useState(false);
@@ -28,7 +28,7 @@ export default function HomePage() {
 
   function addToCart(item, quantity) {
     if (!cartItem.find((cartItem) => cartItem.id === item.id))
-      setCartItem((prev) => [...prev, { id: item.id, quantity: quantity }]);
+      setCartItem((prev) => [...prev, { dishid: parseInt(item.id), quantity: quantity }]);
   }
 
   function Searching() {
@@ -50,7 +50,7 @@ export default function HomePage() {
   }
 
   console.log(cartItem);
-
+  console.log(uid);
   return (
     <div className="main-container">
       <header>

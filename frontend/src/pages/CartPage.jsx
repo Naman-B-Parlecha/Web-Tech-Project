@@ -1,8 +1,10 @@
 import "./CartPage.scss";
 import CartItem from "../components/cartItem.jsx";
 import { useNavigate } from "react-router-dom";
-export default function CartPage() {
+
+export default function CartPage({cart,setCart}) {
   const navigator = useNavigate();
+  console.log(cart);
   function NavigateHome() {
     navigator("/home");
   }
@@ -19,9 +21,10 @@ export default function CartPage() {
       </header>
       <div className="main-cart">
         <div className="cart-items">
+          {cart.map(e=><CartItem item={e} key={e.dishid}/>)}
+          {/* <CartItem />
           <CartItem />
-          <CartItem />
-          <CartItem />
+          <CartItem /> */}
         </div>
         <div className="cart-price">
           <h1 className="sum">Order Summary</h1>

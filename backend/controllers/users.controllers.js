@@ -29,8 +29,8 @@ export const addUser = async (req, res) => {
 
 export const updateCart = async (req,res) => {
     try{
-        await User.findByIdAndUpdate(req.params.u_id,{cart:req.body.cart});
-        res.status(200).json({message:"Cart Updated"});
+        const updatedCart=await User.findByIdAndUpdate(req.params.u_id,{cart:req.body.cart});
+        res.status(200).json({cart:updatedCart.cart});
     }catch{
         res.status(404).json({message:"User not found"});
     }

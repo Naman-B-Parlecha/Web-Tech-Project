@@ -3,7 +3,7 @@ import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-export default function Login() {
+export default function Login({setUid,setCartItem}) {
   const navigate = useNavigate();
   const [LoggingIn, setLoggingIn] = useState(false);
   const emailRef = useRef();
@@ -21,7 +21,8 @@ export default function Login() {
           pass: passwordRef.current.value,
         }
         )
-        console.log(res.data);
+        setUid(res.data._id);
+        setCartItem(res.data.cart);
         navigate("/home");
       }catch(e){
         if(e.response.data.message==="User not found"){
@@ -36,7 +37,7 @@ export default function Login() {
             email: emailRef.current.value,
             pass: passwordRef.current.value,
           })
-        console.log(res);
+        setUid(res.data._id);
         navigate("/home");
         }catch(e){
           console.log(e);

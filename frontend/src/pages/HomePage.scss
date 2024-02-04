@@ -26,9 +26,12 @@
   // justify-content: center;
   background-color: var(--PRIMARY);
   padding-bottom: 2rem;
+  margin-top: 5rem;
   header {
+    position: fixed;
+    top: 0;
     background-color: var(--SECONDARY);
-    width: 100%;
+    width: 100vw;
     display: flex;
     padding: 1rem 2rem;
     flex-flow: row wrap;
@@ -122,13 +125,13 @@
     h1 {
       word-spacing: 10px;
       color: var(--BLACK);
-      font-size: 2rem;
+      font-size: 4rem;
       white-space: wrap;
-      font-family: "Climate Crisis", sans-serif;
+      font-family: 'Caveat', cursive;
       text-align: center;
     }
     .line {
-      font-family: "Lilita One", sans-serif;
+      font-family: sans-serif;
       text-align: center;
       width: 100%;
       color: var(--BLACK);

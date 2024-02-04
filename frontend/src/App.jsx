@@ -11,7 +11,7 @@ function App() {
   const router = createBrowserRouter([
     { path: "/", element: <LoginPage setUid={setUid} setCartItem={setCartItem}/> },
     { path: "/home", element: <HomePage uid={uid} cartItem={cartItem} setCartItem={setCartItem}/> },
-    { path: "/cart", element: <CartPage cart={cartItem} setCart={setCartItem}/> },
+    { path: "/cart", element: <CartPage cart={cartItem} setCart={setCartItem} uid={uid}/> },
   ]);
   return (
     <div className="AppHome">

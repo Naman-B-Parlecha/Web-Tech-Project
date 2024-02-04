@@ -1,41 +1,37 @@
-import { useEffect,useState } from "react";
 import "./cartItem.scss";
 import axios from "axios";
 
-export default function CartItem({item}) {
-  const [itemDetails,setItemDetails]=useState(null);
-  const getDetails = async () => {
-    try {
-      const response = await axios.get(`http://localhost:3001/api/v1/dishes/${item.dishid}`);
-      setItemDetails(response.data);
-    } catch (error) {
-      console.error("Error fetching item details:", error);
-    }
+export default function CartItem({ uid, item, setCart,quantity,cart }) {
+  
+
+  const removeItem = () => {
+    const updatedCart = cart.filter((cartItem) => cartItem.dishid != item.id);
+    setCart(updatedCart);
+    axios.post(`http://localhost:3001/api/v1/user/${uid}/cart`, {
+      cart: updatedCart,
+    });
   };
-  useEffect(()=>{
-    getDetails();
-  }, [item.id])
   return (
     <div className="cartItemCont">
-      {itemDetails ? (
+      {item ? (
         <>
-          <img src={itemDetails.img} alt="image" />
+          <img src={item.img} alt="image" />
           <div className="itemDetails">
-            <h1 className="itemName">{itemDetails.name}</h1>
-            <p className="itemDesp">{itemDetails.desp}</p>
-            <button className="removeItem">Remove Item</button>
+            <h1 className="itemName">{item.name}</h1>
+            <p className="itemDesp">{item.desp}</p>
+            <button className="removeItem" onClick={removeItem}>Remove Item</button>
           </div>
           <div className="details">
             <div className="cartItemPrice">
-              <h2 className="totalItemPrice">${itemDetails.price}</h2>
+              <h2 className="totalItemPrice">${item.price}</h2>
             </div>
             <div className="quantityItem">
               <button onClick={() => {}}>-</button>
               <input
                 className="input-number"
                 type="number"
-                value={1}
-                onChange={() => {}}
+                value={quantity}
+                readOnly
                 inputMode="numeric"
               />
               <button onClick={() => {}}>+</button>

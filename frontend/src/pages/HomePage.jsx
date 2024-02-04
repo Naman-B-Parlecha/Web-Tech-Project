@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BsSliders } from "react-icons/bs";
+import { BiArrowBack } from "react-icons/bi";
+import { FaSearch } from "react-icons/fa";
 import "./HomePage.scss";
 import { useNavigate } from "react-router-dom";
-import { DUMMY_DATA, ALL_DATA } from "../DUMMY_DATA.js";
+import { DUMMY_DATA } from "../DUMMY_DATA.js";
 import Item from "../components/Item.jsx";
 import axios from "axios";
 
@@ -16,23 +18,38 @@ export default function HomePage({uid, cartItem, setCartItem}) {
   useEffect(() => {
     async function getAllItems() {
       const res = await axios.get("http://localhost:3001/api/v1/dishes");
-      console.log(res);
       setAllItems(res.data);
     }
     getAllItems();
 
   }, []);
   function PageChange() {
-    navigator("/cart");
+    if(uid==="")
+      navigator("/");
+    else
+      navigator("/cart");
   }
 
-  function addToCart(item, quantity) {
-    if (!cartItem.find((cartItem) => cartItem.id === item.id))
-      setCartItem((prev) => [...prev, { dishid: parseInt(item.id), quantity: quantity }]);
-  }
+  async function addToCart(item, quantity) {
+    const updatedCartItem = cartItem.map((cartItem) => {
+      if (cartItem.dishid === parseInt(item.id)) {
+        cartItem.quantity += quantity;
+      }
+      return cartItem;
+    });
 
+    if (!updatedCartItem.find((cartItem) => cartItem.dishid === parseInt(item.id))) {
+      updatedCartItem.push({ dishid: parseInt(item.id), quantity: quantity });
+    }
+
+    await setCartItem(updatedCartItem);
+
+    axios.post(`http://localhost:3001/api/v1/user/${uid}/cart`, {
+      cart: updatedCartItem, 
+    });
+  }
   function Searching() {
-    filteredItems.current = DUMMY_DATA.filter(
+    filteredItems.current = allitems.filter(
       (item) =>
         item.name.toLowerCase() === searchItem.current.value.toLowerCase()
     );
@@ -48,16 +65,19 @@ export default function HomePage({uid, cartItem, setCartItem}) {
     }
     searchItem.current.value = "";
   }
-
-  console.log(cartItem);
-  console.log(uid);
+  function removeHandler() {
+    setIsSearching(false);
+  }
   return (
     <div className="main-container">
       <header>
-        <p className="project-name">Web Tech</p>
-        <input type="text" placeholder={"search"} ref={searchItem} />
+        <p className="project-name">Fodado</p>
+        {isSearching && <button className="filters-btn" onClick={removeHandler}>
+        <BiArrowBack />
+        </button>}
+        <input type="text" placeholder={"Search any food..."} ref={searchItem} />
         <button className="search" onClick={Searching}>
-          search
+          <FaSearch />
         </button>
         <button className="filters-btn">
           <BsSliders />

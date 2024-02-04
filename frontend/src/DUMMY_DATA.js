@@ -23,7 +23,7 @@ export const DUMMY_DATA = [
     name: "Poori",
     desp: "A deep-fried bread made from unleavened whole-wheat flour, often served with a curry. ",
     price: 50,
-    img: "https://www.vegrecipesofindia.com/wp-content/uploads/2015/02/poori-recipe-1.jpghttps://www.indianhealthyrecipes.com/wp-content/uploads/2020/12/poori-puri-recipe.jpg",
+    img: "https://www.yummytummyaarthi.com/wp-content/uploads/2022/06/poori-masala-1.jpg",
     type: ["indian", "south_indian", "breakfast", "veg", "bread"],
   },
   {

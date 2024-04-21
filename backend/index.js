@@ -25,7 +25,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://web-tech-project-frontend.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(dishesRoutes);
 
 app.use(express.urlencoded({ extended: true }));

@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 async function connectToDatabase() {
   try {
-    
-    const uri = 'mongodb+srv://mohitnagaraj20:XEdCOl9OwqV8Hv7m@resdb.tj9krjc.mongodb.net/';
+    const uri = process.env.MONGODB_URI;
     
     await mongoose.connect(uri);
 

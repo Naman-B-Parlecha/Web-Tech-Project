@@ -1,16 +1,35 @@
 {
-    "version": 2,
-    "builds": [
-     {
-      "src": "app.js",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["dist/*"] }
-     }
-    ],
-    "routes": [
-     {
-      "src": "/(.)",
+  "version": 2,
+  "name": "backend",
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/v1/dishes",
       "dest": "index.js"
-     }
-    ]
-   }
+    },
+    {
+      "src": "/api/v1/dishes/:d_id",
+      "dest": "index.js"
+    },
+    {
+      "src": "/api/v1/user/:u_id/cart",
+      "dest": "index.js"
+    },
+    {
+      "src": "/api/v1/user/login",
+      "dest": "index.js"
+    },
+    {
+      "src": "/api/v1/user/register",
+      "dest": "index.js"
+    }
+  ],
+  "env": {
+    "SECRETKEY": "@secretkey"
+  }
+}

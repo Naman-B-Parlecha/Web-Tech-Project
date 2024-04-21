@@ -17,7 +17,7 @@ export default function HomePage({uid, cartItem, setCartItem}) {
   const [allitems, setAllItems] = useState([]);
   useEffect(() => {
     async function getAllItems() {
-      const res = await axios.get("http://localhost:3001/api/v1/dishes");
+      const res = await axios.get("https://web-tech-project-backend.vercel.app/api/v1/dishes");
       setAllItems(res.data);
     }
     getAllItems();
@@ -44,7 +44,7 @@ export default function HomePage({uid, cartItem, setCartItem}) {
 
     await setCartItem(updatedCartItem);
 
-    axios.post(`http://localhost:3001/api/v1/user/${uid}/cart`, {
+    axios.post(`https://web-tech-project-backend.vercel.app/api/v1/user/${uid}/cart`, {
       cart: updatedCartItem, 
     });
   }

@@ -28,8 +28,5 @@
       "src": "/api/v1/user/register",
       "dest": "index.js"
     }
-  ],
-  "env": {
-    "SECRETKEY": "@secretkey"
-  }
+  ]
 }

@@ -7,7 +7,7 @@ export default function CartItem({ uid, item, setCart,quantity,cart }) {
   const removeItem = () => {
     const updatedCart = cart.filter((cartItem) => cartItem.dishid != item.id);
     setCart(updatedCart);
-    axios.post(`http://localhost:3001/api/v1/user/${uid}/cart`, {
+    axios.post(`https://web-tech-project-backend.vercel.app/api/v1/user/${uid}/cart`, {
       cart: updatedCart,
     });
   };

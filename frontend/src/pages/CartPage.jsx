@@ -13,7 +13,7 @@ export default function CartPage({ uid, cart, setCart }) {
   }
   const getDetails = async (dishid) => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/v1/dishes/${dishid}`);
+      const response = await axios.get(`https://web-tech-project-backend.vercel.app/api/v1/dishes/${dishid}`);
       return (response.data);
     } catch (error) {
       console.error("Error fetching item details:", error);

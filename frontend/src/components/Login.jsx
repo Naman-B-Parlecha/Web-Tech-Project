@@ -15,7 +15,7 @@ export default function Login({setUid,setCartItem,loginFailedHandler}) {
   async function authentication() {
     if(LoggingIn){
       try{
-        const res=await axios.post('http://localhost:3001/api/v1/user/login',
+        const res=await axios.post('https://web-tech-project-backend.vercel.app/api/v1/user/login',
         {
           email: emailRef.current.value,
           pass: passwordRef.current.value,
@@ -34,7 +34,7 @@ export default function Login({setUid,setCartItem,loginFailedHandler}) {
       }
     }else{
       try{
-        const res=await axios.post("http://localhost:3001/api/v1/user/register", {
+        const res=await axios.post("https://web-tech-project-backend.vercel.app/api/v1/user/register", {
             email: emailRef.current.value,
             pass: passwordRef.current.value,
           })
